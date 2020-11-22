@@ -17,3 +17,30 @@
 //   [1,2],
 //   []
 // ]
+
+
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var subsets = function (nums) {
+  const res = []
+  let len = nums.length
+  let subset = []
+  function bfs (index) {
+    // console.log(subset.slice())
+    res.push(subset.slice())
+    // console.log(res)
+    for (let i = index; i < len; i++) {
+      subset.push(nums[i])
+      bfs(i + 1)
+      subset.pop()
+    }
+  }
+  bfs(0)
+  return res
+};
+
+let nums = [1, 2, 3]
+let result = subsets(nums)
+console.log(result)

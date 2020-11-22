@@ -58,6 +58,7 @@ const solveNQueens = (n) => {
         // console.log(res)
       }
       res.push(cur)
+      return
     }
     for (let col = 0; col < n; col++) {
       // console.log(cols.has(col))
