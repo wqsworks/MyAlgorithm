@@ -2,7 +2,7 @@
 
 
 
-const nums = [2, 7, 11, 15], target = 9
+// const nums = [2, 7, 11, 15], target = 9
 
 
 
@@ -20,7 +20,7 @@ const nums = [2, 7, 11, 15], target = 9
 //   let len = nums.length
 //   for (let i = 0; i < len; i++) {
 //     result[0] = i
-//     if (map.has(nums[i])) {2
+//     if (map.has(nums[i])) {
 //       return [map.get(nums[i]), i]
 //     } else {
 //       map.set(target - nums[i], i)
@@ -31,3 +31,22 @@ const nums = [2, 7, 11, 15], target = 9
 // console.log(twoSum(nums, target))
 
 // 双指针  需要有序数组
+const nums = [2, 7, 11, 15], target = 9
+
+
+var twoSum = function (nums, target) {
+  let len = nums.length
+  let res = []
+  let hashMap = new Map()
+  for (let i = 0; i < len; i++) {
+    if (!hashMap.has(nums[i])) {
+      hashMap.set(target - nums[i], i)
+    } else {
+      res.push(i)
+      res.push(hashMap.get(nums[i]))
+      console.log(res)
+    }
+  }
+  return res
+};
+// console.log(twoSum(nums, target))

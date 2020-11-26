@@ -21,24 +21,58 @@
 
 
 //   fo
-var lengthOfLIS = function (nums) {
-  const len = nums.length
-  if (!len) {
-    return 0
-  }
-  const dp = (new Array(len)).fill(1)
-  let maxLen = 1
-  for (let i = 1; i < len; i++) {
-    for (let j = 0; j < i; j++) {
-      if (nums[i] > nums[j]) {
-        dp[i] = Math.max(dp[i], dp[j] + 1)
-      }
-    }
-    if (dp[i] > maxLen) {
-      maxLen = dp[i]
-    }
-  }
-  return maxLen
-};
+// var lengthOfLIS = function (nums) {
+//   const len = nums.length
+//   if (!len) {
+//     return 0
+//   }
+//   const dp = (new Array(len)).fill(1)
+//   let maxLen = 1
+//   for (let i = 1; i < len; i++) {
+//     for (let j = 0; j < i; j++) {
+//       if (nums[i] > nums[j]) {
+//         dp[i] = Math.max(dp[i], dp[j] + 1)
+//       }
+//     }
+//     if (dp[i] > maxLen) {
+//       maxLen = dp[i]
+//     }
+//   }
+//   return maxLen
+// };
 
 // 最长上升子序列中 dp[j]可以理解成： 以nums[j]作为 ”最长上升子序列最大值的“ 子序列长度
+
+
+var lengthOfLIS = function (nums) {
+  let tails = [];
+  nums.forEach((num) => {
+    // 二分搜索：找到大于等于 num 的左侧边界，如果全小，则 left = tails.length
+    let left = 0, right = tails.length - 1, mid;
+    while (left <= right) {
+      mid = left + parseInt((right - left) / 2);
+      if (tails[mid] < num) {
+        left = mid + 1;
+      } else if (tails[mid] > num) {
+        right = mid - 1;
+      } else if (tails[mid] === num) {
+        // 收缩左侧边界
+        right = mid - 1;
+      }
+    }
+    tails[left] = num;
+  })
+  // 调试
+  // console.log(tails)
+  return tails.length;
+};
+
+
+
+let res = lengthOfLIS([2, 5, 6, 7, 3, 4])
+console.log(res)
+
+
+console.log(parseInt((9.9 + 0) / 2))
+
+console.log(Math.floor((9.9 + 0) / 2))

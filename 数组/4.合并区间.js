@@ -46,7 +46,6 @@ var merge = function (intervals) {
     }
   }
   return res
-
 };
 
 

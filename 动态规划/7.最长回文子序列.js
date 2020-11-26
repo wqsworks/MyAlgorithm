@@ -45,5 +45,5 @@ var longestPalindromeSubseq = function (s) {
       }
     }
   }
-  return dp[0][len-1]
+  return dp[0][len - 1]
 };
