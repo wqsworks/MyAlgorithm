@@ -10,6 +10,7 @@
 
 // // 输入: "()"
 // // 输出: true
+https://leetcode-cn.com/problems/valid-parentheses/
 
 
 function isValid (s) {
