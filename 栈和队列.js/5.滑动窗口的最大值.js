@@ -21,7 +21,7 @@ var maxSlidingWindow = function (nums, k) {
       deque.pop()
     }
     deque.push(i)
-    while (deque.length && deque[0] <= i - k) {
+    if(deque[0] <= i - k) {
       deque.shift()
     }
 

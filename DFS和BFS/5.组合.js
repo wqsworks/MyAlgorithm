@@ -13,28 +13,48 @@
 //   [1,3],
 //   [1,4],
 // ]
-
+// https://leetcode-cn.com/problems/combinations/
 
 /**
  * @param {number} n
  * @param {number} k
  * @return {number[][]}
  */
+// var combine = function (n, k) {
+  // let res = []
+  // let subset = []
+  // function bfs (count) {
+  //   if (subset.length == k) {
+  //     res.push(subset.slice())
+  //     return
+  //   }
+  //   for (let i = count; i < n + 1; i++) {
+  //     subset.push(i)
+  //     bfs(i + 1)
+  //     subset.pop()
+  //   }
+  // }
+  // bfs(1)
+  // return res
+// };
+
+
+
 var combine = function (n, k) {
   let res = []
-  let subset = []
-  function bfs (count) {
-    if (subset.length == k) {
-      res.push(subset.slice())
+  let cur = []
+  function def (count) {
+    if (cur.length == k) {
+      res.push(cur.slice())
       return
     }
-    for (let i = count; i < n + 1; i++) {
-      subset.push(i)
-      bfs(i + 1)
-      subset.pop()
+    for (let i = count; i < n+1; i++) {
+      cur.push(i)
+      def(i+ 1)
+      cur.pop()
     }
   }
-  bfs(1)
+  def(1)
   return res
 };
 

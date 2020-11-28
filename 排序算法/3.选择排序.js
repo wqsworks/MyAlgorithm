@@ -24,8 +24,24 @@
 // }
 
 
-
-let arr = [5, 3, 2, 4, 1]
 function selectSort (arr) {
-  const len = arr.length
+  let minIndex
+  let len = arr.length
+  for (let i = 0; i < len - 1; i++) {
+    minIndex = i
+    for (let j = i + 1; j < len; j++) {
+      if (arr[j] < arr[minIndex]) {
+        minIndex = j
+      }
+    }
+    if (minIndex !== i) {
+      [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]]
+    }
+  }
+  return arr
 }
+
+
+let arr = [3, 6, 1, 5, 8, 2, 5, 10, 3, 4, 6, 0]
+let res = selectSort(arr)
+console.log(res)
