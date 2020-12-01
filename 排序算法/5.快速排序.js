@@ -52,19 +52,50 @@
 // }
 
 
+// var quickSort = function (arr) {
+//   if (arr.length <= 1) { return arr; }
+//   var pivotIndex = Math.floor(arr.length / 2);
+//   var pivot = arr.splice(pivotIndex, 1)[0];
+//   console.log(arr)
+//   var left = [];
+//   var right = [];
+//   for (var i = 0; i < arr.length; i++) {
+//     if (arr[i] < pivot) {
+//       left.push(arr[i])
+//     } else {
+//       right.push(arr[i])
+//     }
+//   }
+//   return quickSort(left).concat([pivot], quickSort(right));
+// };
+
+let arr = [3, 6, 1, 5, 8, 2, 5, 10, 3, 4, 6, 0]
+let res = quickSort(arr)
+// console.log(res)
+
 var quickSort = function (arr) {
-  if (arr.length <= 1) { return arr; }
-  var pivotIndex = Math.floor(arr.length / 2);
-  var pivot = arr.splice(pivotIndex, 1)[0];
-  var left = [];
-  var right = [];
-  for (var i = 0; i < arr.length; i++) {
-    if (arr[i] < pivot) {
+  if (arr.length < 1) {
+    return arr
+  }
+  let l = 0
+  let r = arr.length - 1
+  console.log(l, r)
+  let middleIndex = l + parseInt((r - l) / 2)
+  // let middleIndex = Math.floor(arr.length / 2)
+  let middle = arr.splice(middleIndex, 1)[0]
+  let left = []
+  let right = []
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] < middle) {
       left.push(arr[i])
     } else {
       right.push(arr[i])
     }
   }
-  return quickSort(left).concat([pivot], quickSort(right));
+  return quickSort(left).concat([middle], quickSort(right))
+}
 
-};
+
+let arr = [3, 6, 1, 5, 8, 2, 5, 10, 3, 4, 6, 0,1]
+let res = quickSort(arr)
+console.log(res)
