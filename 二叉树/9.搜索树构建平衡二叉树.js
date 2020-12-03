@@ -18,6 +18,7 @@
  * @param {TreeNode} root
  * @return {TreeNode}
  */
+
 var balanceBST = function (root) {
   let treeArray = []
   function orderBianaryTree (root) {

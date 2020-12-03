@@ -35,4 +35,3 @@ var isBalanced = function (root) {
 
   return flag
 };
-
