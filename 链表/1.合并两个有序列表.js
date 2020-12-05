@@ -45,3 +45,5 @@ var mergeTwoLists = function (l1, l2) {
     return l2
   }
 };
+
+console.log(null < 2)
