@@ -58,29 +58,48 @@
 // }
 
 
-var trap = function (height) {
+// var trap = function (height) {
+//   let len = height.length
+//   let leftCur = 0
+//   let rightCur = len - 1
+//   let leftMax = 0
+//   let rightMax = 0
+//   let res = 0
+//   while (leftCur < rightCur) {
+//     let left = height[leftCur]
+//     let right = height[rightCur]
+//     if (left < right) {
+//       leftMax = Math.max(left, leftMax)
+//       res += leftMax - left
+//       leftCur++
+//     } else {
+//       rightMax = Math.max(right, rightMax)
+//       res += rightMax - right
+//       rightCur--
+//     }
+//   }
+//   return res
+// }
+function trap (height) {
   let len = height.length
-  let leftCur = 0
-  let rightCur = len - 1
+  let left = 0
+  let right = len - 1
+  let res = 0
   let leftMax = 0
   let rightMax = 0
-  let res = 0
-  while (leftCur < rightCur) {
-    let left = height[leftCur]
-    let right = height[rightCur]
-    if (left < right) {
-      leftMax = Math.max(left, leftMax)
-      res += leftMax - left
-      leftCur++
+  while (left < right) {
+    if (height[left] < height[right]) {
+      leftMax = Math.max(leftMax, height[left])
+      res += (leftMax - height[left])
+      left++
     } else {
-      rightMax = Math.max(right, rightMax)
-      res += rightMax - right
-      rightCur--
+      rightMax = Math.max(rightMax, height[right])
+      res += (rightMax - height[right])
+      right--
     }
   }
   return res
 }
-
 let height = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]
 
 trap(height)

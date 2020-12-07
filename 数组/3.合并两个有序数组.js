@@ -24,8 +24,6 @@ const merge = function (nums1, m, nums2, n) {
     k--
     j--
   }
-
-
   return nums1
 }
 

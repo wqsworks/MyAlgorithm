@@ -22,11 +22,14 @@
 var reverseList = function (head) {
   let pre = null
   let cur = head
+  let next
   while (cur != null) {
-    let next = cur.next
+    next = cur.next
     cur.next = pre
     pre = cur
     cur = next
   }
   return pre
 };
+
+
