@@ -96,6 +96,29 @@ var quickSort = function (arr) {
 }
 
 
-let arr = [3, 6, 1, 5, 8, 2, 5, 10, 3, 4, 6, 0,1]
+let arr = [3, 6, 1, 5, 8, 2, 5, 10, 3, 4, 6, 0, 1]
+let res = quickSort(arr)
+console.log(res)
+
+
+function quickSort (arr) {
+  if (arr.length < 1) {
+    return arr
+  }
+  let l = 0, r = arr.length
+  let middleIndex = l + parseInt((r - l) / 2)
+  let middle = arr.splice(middleIndex, 1)[0]
+  let left = []
+  let right = []
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] >= middle) {
+      right.push(arr[i])
+    } else {
+      left.push(arr[i])
+    }
+  }
+  return quickSort(left).concat([middle], quickSort(right))
+}
+let arr = [3, 6, 1, 5, 8, 2, 5, 10, 3, 4, 6, 0, 1]
 let res = quickSort(arr)
 console.log(res)

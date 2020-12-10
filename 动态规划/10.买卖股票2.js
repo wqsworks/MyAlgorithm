@@ -7,20 +7,20 @@
 
 // https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/
 
-// function maxProfit(prices) {
-//   const len = prices.length;
-//   if (len < 2) {
-//     return 0;
-//   };
-//   let unhold = 0;	// 当天没有持有的情况下，最大的利润
-//   let hold = -prices[0]; // 当天持有的情况下，最大的利润
-//   for (let i = 1; i < len; i++) {
-//     const temp = unhold;  // 求今天的hold时，要用到昨天的unhold，暂存一下昨天的unhold
-//     unhold = Math.max(unhold, hold + prices[i]); // 求今天的unhold
-//     hold = Math.max(hold, temp - prices[i]);     // 求今天的hold
-//   }
-//   return unhold;
-// };
+function maxProfit (prices) {
+  const len = prices.length;
+  if (len < 2) {
+    return 0;
+  };
+  let unhold = 0;	// 当天没有持有的情况下，最大的利润
+  let hold = -prices[0]; // 当天持有的情况下，最大的利润
+  for (let i = 1; i < len; i++) {
+    const temp = unhold;  // 求今天的hold时，要用到昨天的unhold，暂存一下昨天的unhold
+    unhold = Math.max(unhold, hold + prices[i]); // 求今天的unhold
+    hold = Math.max(hold, temp - prices[i]);     // 求今天的hold
+  }
+  return unhold;
+};
 
 
 // 作者：xiao_ben_zhu

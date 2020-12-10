@@ -10,17 +10,17 @@
 
 // 如果你已经实现复杂度为 O(n) 的解法，尝试使用更为精妙的分治法求解。
 // https://leetcode-cn.com/problems/maximum-subarray/
-var maxSubArray = function(nums) {
+var maxSubArray = function (nums) {
   let ans = nums[0];
   let sum = 0;
-  for(let num of nums) {
-      // if(sum > 0) { 可以写成这样
-      if(sum + num > num ){
-          sum = sum + num;
-      } else {
-          sum = num;
-      }
-      ans = Math.max(ans, sum);
+  for (let num of nums) {
+    // if(sum > 0) { 可以写成这样
+    if (sum + num > num) {
+      sum = sum + num;
+    } else {
+      sum = num;
+    }
+    ans = Math.max(ans, sum);
   };
   return ans;
 };
