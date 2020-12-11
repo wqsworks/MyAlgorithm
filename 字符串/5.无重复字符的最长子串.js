@@ -23,3 +23,29 @@ var lengthOfLongestSubstring = function (s) {
 let s = "a"
 let res = lengthOfLongestSubstring(s)
 console.log(res)
+
+var lengthOfLongestSubstring = function (s) {
+  let left = 0, right = 0
+  let window = {}
+  let max = 0
+  while (right < s.length) {
+    let curChar = s[right]
+    right++
+    if (!window[curChar]) {
+      window[curChar] = 1
+    } else {
+      window[curChar]++
+    }
+    console.log(window, left, right)
+    while (window[curChar] > 1) {
+      window[s[left]]--
+      left++
+    }
+    max = Math.max(max, right - left)
+  }
+  return max
+};
+
+let s = "pwwkew"
+let res = lengthOfLongestSubstring(s)
+console.log(res)

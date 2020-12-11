@@ -33,3 +33,14 @@
 
 
 
+let res = [1, [2, [3, [4, null]]]]
+// let res = [4, [3, [2, [1, null]]]]
+let res1 = res.flat(Infinity)
+
+console.log(res1)
+let res2 = res1.reduce((a, b) => {
+  let temp = [b].push(a)
+  console.log(temp)
+  return temp
+}, [])
+console.log(res2)
