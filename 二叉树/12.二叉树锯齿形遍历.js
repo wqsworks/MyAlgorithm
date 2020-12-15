@@ -47,3 +47,39 @@
 // 链接：https://leetcode-cn.com/problems/binary-tree-zigzag-level-order-traversal/solution/yi-tao-quan-fa-shua-diao-nge-bian-li-shu-de-wen-9/
 // 来源：力扣（LeetCode）
 // 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number[][]}
+ */
+var zigzagLevelOrder = function (root) {
+  let res = []
+  if (!root) {
+    return res
+  }
+  let queue = []
+  queue.push(root)
+  while (queue.length) {
+    res.push([])
+    let len = queue.length
+    for (let i = 0; i < len; i++) {
+      let temp = queue.shift()
+      res.length % 2 == 1 ? res[res.length - 1].push(temp.val) : res[res.length - 1].unshift(temp.val)
+      if (temp.left) {
+        queue.push(temp.left)
+      }
+      if (temp.right) {
+        queue.push(temp.right)
+      }
+    }
+  }
+  return res
+};
